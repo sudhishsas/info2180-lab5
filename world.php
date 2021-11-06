@@ -14,12 +14,54 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<ul>
-<?php foreach ($results as $row): ?>
-  <?php if($country === $row['name']){  ?>
-  <li><?= $row['name'] . ' is ruled by ' . $row['head_of_state']; ?></li>
-  
-    <?php } ?>
+<?php if($country !== ""){ ?>
+<?php $c = 0;foreach ($results as $row): ?>
+  <?php $c =$c+1;if($country === $row['name']){   ?>
+    <table>
+  <tr>
+    <th><?= 'Name'; ?></th>
+    <th><?= 'Continent'; ?></th>
+    <th><?= 'Independence'; ?></th>
+    <th><?= 'Head of State'; ?></th>
+  </tr>
+    <tr>
+      <td><?= $row['name'];?></td>
+      <td><?= $row['continent']; ?></td>
+      <td><?= $row['independence_year']; ?></td>
+      <td><?= $row['head_of_state']; ?></td>
+    </tr>
+    </table>
+    <?php break; ?>
+    <?php }elseif($c == 239 && $country !== $row['name'] ){
+        
+        echo('<span style="color:red;">NOT A COUNTRY</span>');
+        break;
+     } ?> 
 <?php endforeach; ?>
-</ul>
+<?php } ?>
 
+<?php if($country === ""){?>
+  <table>
+      <tr>
+        <th><?= 'Name'; ?></th>
+        <th><?= 'Continent'; ?></th>
+        <th><?= 'Independence'; ?></th>
+        <th><?= 'Head of State'; ?></th>
+      </tr>
+  <?php $c = 0;foreach ($results as $row): ?>
+    <?php if($country === "" ){ ?>
+          <tr>
+          <td><?= $row['name'];?></td>
+          <td><?= $row['continent']; ?></td>
+          <td><?= $row['independence_year']; ?></td>
+          <td><?= $row['head_of_state']; ?></td> 
+        </tr>
+    <?php }elseif($c == 239 && $country !== $row['name'] ){
+    $check = 1;
+    echo('<span style="color:red;">NOT A COUNTRY</span>');
+    break;
+  } ?> 
+  <?php endforeach; ?>
+</table>
+  <?php } ?>
+  
