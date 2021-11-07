@@ -1,6 +1,9 @@
 <?php header('Access-Control-Allow-Origin: *'); ?>
 <?php error_reporting(0); ?>
-
+<?php
+  define('CSSPATH', 'template/css/'); //define css path
+  $cssItem = 'style.css'; //css item to display
+?>    
 <?php
 $host = 'localhost';
 $username = 'lab5_user';
@@ -30,7 +33,7 @@ if(isset($lookup)){
   $country = trim(filter_var($country, FILTER_SANITIZE_STRING));?>
 <?php $c = 0;foreach ($results as $row): ?>
   <?php $c =$c+1;if($country === $row['name']){   ?>
-    <table>
+    <table id="info">
   <tr>
     <th><?= 'Name'; ?></th>
     <th><?= 'Continent'; ?></th>
@@ -55,7 +58,7 @@ if(isset($lookup)){
 
 <?php //checks if the look up feild was empty and printing the default. ?>
 <?php if($country === "" && $check === 2){?>
-  <table>
+  <table id="info">
       <tr>
         <th><?= 'Name'; ?></th>
         <th><?= 'Continent'; ?></th>
@@ -102,7 +105,7 @@ if(isset($lookup)){
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC); ?> 
         <?php $c = 0;foreach ($results as $row): ?>
       <?php $c =$c+1;if($city === $row['country_code']){   ?>
-        <table>
+        <table id="info">
       <tr>
         <th><?= 'Name'; ?></th>
         <th><?= 'District'; ?></th>
@@ -130,7 +133,7 @@ if(isset($lookup)){
     $stmt = $conn->query("SELECT * FROM cities");
   
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);?>
-  <table>
+  <table id="info">
       <tr>
         <th><?= 'Name'; ?></th>
         <th><?= 'District'; ?></th>

@@ -13,16 +13,20 @@
 
 	<body>
 		<header>
-			<h1>World Database Lookup</h1>
+			<div class = "container">
+				<h1>World Database Lookup</h1>
+			</div>
 		</header>
 
 		<main>
-			<div id="controls">
+			<div class ="container">
 				<form action="#" method="get">
-					<label for="country">Country:</label>
-					<input id="country" type="search" name="country" class= "form-control" placeholder="Enter country name" />
-					<button type="submit" id="lookup" name ="lookup" value = '1'>Lookup</button>
-					<button type="submit" id="cities" name ="cities" value='2'>Cities</button>
+					<div class="form-group">
+						<label for="country" class = "form-label">Country:</label>
+						<input id="country" type="search" name="country" class= "input" placeholder="Enter country name" />
+						<button type="submit" id="lookup" name ="lookup" class= "btn" >Lookup</button>
+						<button type="submit" id="cities" name ="cities" class="btn" >Cities</button>
+					</div>
 				</form>
 			</div>
 			
@@ -30,6 +34,10 @@
 				<!-- countries will appear here -->
 			</div>
 		</main>
-
+		<footer>
+			<div class="container">
+				<p class="text-muted">Copyright of Sudhish Sepaul 2021&copy; , Form &amp; Co.</p>
+			</div>
+		</footer>
 	</body>
 </html>
