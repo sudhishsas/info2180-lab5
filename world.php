@@ -16,7 +16,7 @@ $city = "";
 
 
 $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-$stmt = $conn->query("SELECT * FROM countries");
+$stmt = $conn->query("SELECT * FROM countries WHERE name LIKE '%$country%';");
 
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -32,7 +32,8 @@ if(isset($lookup)){
 <?php if($country !== "" && $check === 2){ 
   $country = trim(filter_var($country, FILTER_SANITIZE_STRING));?>
 <?php $c = 0;foreach ($results as $row): ?>
-  <?php $c =$c+1;if($country === $row['name']){   ?>
+
+  <?php $c =$c+1;if($stmt !== ""){   ?>
     <table id="info">
   <tr>
     <th><?= 'Name'; ?></th>
@@ -48,11 +49,11 @@ if(isset($lookup)){
     </tr>
     </table>
     <?php break; ?>
-    <?php }elseif($c == 239 && $country !== $row['name'] ){
+    <?php }elseif($c == 239 && $stmt === ""){ ?>
         
-        echo('<span style="color:red;">NOT A COUNTRY</span>');
-        break;
-     } ?> 
+       <span style= color:red;><?= 'NOT A COUNTRY' ?></span>
+       <?php  break; ?>
+    <?php } ?> 
 <?php endforeach; ?>
 <?php } ?>
 
@@ -89,7 +90,7 @@ if(isset($lookup)){
   $country = trim(filter_var($country, FILTER_SANITIZE_STRING));?>
 <?php $c = 0;foreach ($results as $row): ?>
     
-  <?php $c =$c+1;if($country === $row['name']){  
+  <?php $c =$c+1;if($country === $row['name'] || $stmt !== ""){  
         $city = $row['code'];
         break;
      } ?> 
