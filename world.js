@@ -13,7 +13,7 @@ window.onload = function () {
         console.log('clicked city');
         const htr = new XMLHttpRequest();
 
-        search = document.getElementById("country").value;
+        search = sanitizer(document.getElementById("country").value);
         console.log('worked yes');
        
        
@@ -36,7 +36,7 @@ window.onload = function () {
         console.log('clicked');
         const htr = new XMLHttpRequest();
 
-        search = document.getElementById("country").value;
+        search = sanitizer(document.getElementById("country").value);
         console.log('worked');
        
        
@@ -54,3 +54,10 @@ window.onload = function () {
 
     }
 };
+
+
+
+function sanitizer(str){
+    str = str.replace(/[^a-z0-9áéíóúñü \.,_-]/gim,"");
+    return str.trim();
+}
