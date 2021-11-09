@@ -97,23 +97,25 @@ if(isset($lookup)){
     $stmt = $conn->query("SELECT * FROM cities");
   
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC); ?> 
-        <?php $c = 0;foreach ($results as $row): ?>
-      <?php $c =$c+1;if($city === $row['country_code']){   ?>
-        <table id="info">
+    <table id="info">
       <tr>
         <th><?= 'Name'; ?></th>
         <th><?= 'District'; ?></th>
         <th><?= 'Population'; ?></th>
       </tr>
+        <?php $c = 0;foreach ($results as $row): ?>
+      <?php $c =$c+1;if($city === $row['country_code']){   ?>
+        
         <tr>
           <td><?= $row['name'];?></td>
           <td><?= $row['district']; ?></td>
           <td><?= $row['population']; ?></td>
         </tr>
-        </table>
-        <?php break; ?>
+        
+        
         <?php } ?> 
     <?php endforeach; ?>
+    </table>
 <?php } ?>
 
 
