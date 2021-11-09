@@ -35,25 +35,22 @@ if(isset($lookup)){
 
   <?php $c =$c+1;if($stmt !== ""){   ?>
     <table id="info">
-  <tr>
-    <th><?= 'Name'; ?></th>
-    <th><?= 'Continent'; ?></th>
-    <th><?= 'Independence'; ?></th>
-    <th><?= 'Head of State'; ?></th>
-  </tr>
-    <tr>
-      <td><?= $row['name'];?></td>
-      <td><?= $row['continent']; ?></td>
-      <td><?= $row['independence_year']; ?></td>
-      <td><?= $row['head_of_state']; ?></td>
-    </tr>
+        <tr>
+          <th><?= 'Name'; ?></th>
+          <th><?= 'Continent'; ?></th>
+          <th><?= 'Independence'; ?></th>
+          <th><?= 'Head of State'; ?></th>
+        </tr>
+          <tr>
+            <td><?= $row['name'];?></td>
+            <td><?= $row['continent']; ?></td>
+            <td><?= $row['independence_year']; ?></td>
+            <td><?= $row['head_of_state']; ?></td>
+          </tr>
     </table>
+    
     <?php break; ?>
-    <?php }elseif($c == 239 && $stmt === ""){ ?>
-        
-       <span style= color:red;><?= 'NOT A COUNTRY' ?></span>
-       <?php  break; ?>
-    <?php } ?> 
+    <?php }?>
 <?php endforeach; ?>
 <?php } ?>
 
@@ -75,11 +72,7 @@ if(isset($lookup)){
           <td><?= $row['head_of_state']; ?></td> 
         </tr>
         <?php //shows an error message if the country wasnt valid ?>
-    <?php }elseif($c == 239 && $country !== $row['name'] ){
-    $check = 1;
-    echo('<span style="color:red;">NOT A COUNTRY</span>');
-    break;
-  } ?> 
+    <?php } ?> 
   <?php endforeach; ?>
 </table>
   <?php } ?>
@@ -119,11 +112,7 @@ if(isset($lookup)){
         </tr>
         </table>
         <?php break; ?>
-        <?php }elseif($c == 4079 && $city !== $row['country_code'] ){
-            
-            echo('<span style="color:red;">NOT A COUNTRY</span>');
-            break;
-        } ?> 
+        <?php } ?> 
     <?php endforeach; ?>
 <?php } ?>
 
@@ -147,11 +136,7 @@ if(isset($lookup)){
               <td><?= $row['district']; ?></td>
               <td><?= $row['population']; ?></td>
           </tr>
-    <?php }elseif($c == 4079 && $city !== $row['country_code'] ){
-    $check = 1;
-    echo('<span style="color:red;">NOT A COUNTRY</span>');
-    break;
-  } ?> 
+    <?php } ?> 
   <?php endforeach; ?>
 </table>
   <?php } ?>
